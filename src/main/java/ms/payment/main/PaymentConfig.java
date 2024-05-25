@@ -2,6 +2,7 @@ package ms.payment.main;
 
 import ms.payment.application.gateway.PaymentGateway;
 import ms.payment.application.useCase.CreatePayment;
+import ms.payment.application.useCase.FindByIdPayment;
 import ms.payment.infrastructure.gateways.PaymentEntityMapper;
 import ms.payment.infrastructure.gateways.PaymentRepositoryGateway;
 import ms.payment.infrastructure.persistence.PaymentRepository;
@@ -14,6 +15,11 @@ public class PaymentConfig {
     @Bean
     CreatePayment createPayment(PaymentGateway paymentGateway) {
         return new CreatePayment(paymentGateway);
+    }
+
+    @Bean
+    FindByIdPayment findByIdPayment(PaymentGateway paymentGateway) {
+        return new FindByIdPayment(paymentGateway);
     }
 
     @Bean

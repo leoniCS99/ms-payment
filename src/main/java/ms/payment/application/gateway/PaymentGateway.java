@@ -4,4 +4,6 @@ import ms.payment.domain.entity.Payment;
 
 public interface PaymentGateway {
     Payment create(Payment payment);
+
+    Payment find(Long id);
 }

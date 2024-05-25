@@ -2,6 +2,7 @@ package ms.payment.infrastructure.gateways;
 
 import ms.payment.application.gateway.PaymentGateway;
 import ms.payment.domain.entity.Payment;
+import ms.payment.infrastructure.exception.PaymentException;
 import ms.payment.infrastructure.persistence.PaymentEntity;
 import ms.payment.infrastructure.persistence.PaymentRepository;
 
@@ -19,5 +20,11 @@ public class PaymentRepositoryGateway implements PaymentGateway {
         PaymentEntity paymentEntity = paymentEntityMapper.convertToEntity(payment);
         PaymentEntity savedPaymentEntity = paymentRepository.save(paymentEntity);
         return paymentEntityMapper.convertToPayment(savedPaymentEntity);
+    }
+    @Override
+    public Payment find(Long id) {
+        PaymentEntity paymentEntity = paymentRepository.findById(id)
+                .orElseThrow(PaymentException::new);
+        return paymentEntityMapper.convertToPayment(paymentEntity);
     }
 }
