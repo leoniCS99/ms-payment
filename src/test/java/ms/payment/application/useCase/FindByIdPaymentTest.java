@@ -25,7 +25,7 @@ class FindByIdPaymentTest {
     private PaymentGateway paymentGateway;
 
     @Test
-    @DisplayName("find by id payment return payment")
+    @DisplayName("find by id return payment")
     void findById() {
         //Arrange
         Payment payment = new Payment();
